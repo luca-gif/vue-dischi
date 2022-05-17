@@ -1,26 +1,23 @@
 <template>
   <div id="app">
-    <div class="container">
+    
+    <header-component/>
+    <main-component/>
 
-      ciao
-
-    </div>
   </div>
 </template>
 
 <script>
-
+import HeaderComponent from './components/HeaderComponent.vue'
+import MainComponent from './components/MainComponent.vue'
 
 export default {
   name: 'App',
   components: {
+    HeaderComponent,
+    MainComponent
 
-  },
-  data(){
-    return{
-
-    }
-  },
+  }
 }
 </script>
 
