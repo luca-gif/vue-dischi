@@ -2,13 +2,13 @@
   <main>
     <div class="container-fluid">
       <div class="container">
-        <div class="row row-cols-5 py-5">
+        <div class="row mt-5 py-5">
 
-          <div v-for="(data, index) in datas" :key="index" class="col-2 card text-center p-3 m-3">
+          <div v-for="(data, index) in datas" :key="index" class="col-2 card lm-card text-center p-3 m-3">
             <img :src="data.poster" :alt="data.title">
-
-            <h5>{{data.author}}</h5>
-            <p>{{data.year}}</p>
+            <h6 class="text-white text-uppercase py-3">{{data.title}}</h6>
+            <span>{{data.author}}</span>
+            <span>{{data.year}}</span>
           </div>
           
         </div>
@@ -56,6 +56,13 @@ export default {
     .card{
       background-color: (lighten($primary-color, 5%));
     }
+    .lm-card{
+      height: 350px
+    }
+    span{
+      color: #767372;
+    }
   }
+
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+
     <header class="container-fluid">
 
       <div id="logo">
@@ -13,7 +13,7 @@
       </div>
 
     </header>
-  </div>
+
 </template>
 
 <script>
@@ -26,12 +26,16 @@ export default {
 
 @import '../assets/style/var';
 
+
   header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: (lighten($primary-color, 5%));
     height: 70px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
 
     select{
       padding: 5px;
