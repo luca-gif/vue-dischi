@@ -8,7 +8,7 @@
 
         <div class="genre">
 
-          <select-component @changeValue="selectedGenre()" />
+          <select-component @changeValue="selectedGenre"/>
 
         </div>
 
@@ -17,7 +17,7 @@
       <div class="container">
         <div class="row py-5">
 
-          <div v-for="(data, index) in datas" :key="index" class="col-2 card lm-card text-center p-3 m-3">
+          <div v-for="(data, index) in getAlbumFiltrati" :key="index" class="col-2 card lm-card text-center p-3 m-3">
             <img :src="data.poster" :alt="data.title">
             <h6 class="text-white text-uppercase py-3">{{data.title}}</h6>
             <span>{{data.author}}</span>
@@ -47,7 +47,7 @@ export default {
     return{
       url: 'https://flynn.boolean.careers/exercises/api/array/music',
       datas: [],
-      
+      genereScelto : 'all'
     }
   },
 
@@ -58,11 +58,36 @@ export default {
         this.datas = r.data.response;
       })
     },
+  
+    selectedGenre(genereSelezionato){
+      this.genereScelto = genereSelezionato;
+      //console.log(genereSelezionato);
+    },
 
-    selectedGenre(currentValue){
-      console.log(currentValue)
-    }
   },
+
+    computed: {
+
+      getAlbumFiltrati() {
+
+        let arrayFiltrato = [];
+
+        for(var i = 0; i < this.datas.length; i++) {
+
+          console.log(this.datas[i].genre.toLowerCase(), this.genereScelto.toLowerCase());
+
+          if (this.datas[i].genre.toLowerCase() == this.genereScelto.toLowerCase()) {
+            arrayFiltrato.push(this.datas[i]);
+          } else if (this.genereScelto.toLowerCase() == 'all'){
+            arrayFiltrato = this.datas
+          }
+        }
+
+        return arrayFiltrato;
+      }      
+      
+    },
+    
 
   mounted(){
     this.getApi()
@@ -97,6 +122,5 @@ export default {
       color: #767372;
     }
   }
-
 
 </style>

@@ -1,25 +1,37 @@
 <template>
   <div>
-    <select v-model="selected" @change="$emit('changeValue', selected)" name="" id="">
+    <select v-model="selected" @change="cambioValore">
 
-       <option value="0">Seleziona un genere</option>
-       <option value="1">Seleziona un genere</option>
-       <option value="2">Seleziona un genere</option>
+       <option disabled value="">Seleziona un genere</option>
+       <option value="all">All</option>
+       <option value="rock">Rock</option>
+       <option value="pop">Pop</option>
+       <option value="jazz">Jazz</option>
+       <option value="metal">Metal</option>
 
     </select>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'SelectComponent',
 
   data(){
     return{
-      selected: 0
+      selected: ''
+    }
+  },
+  
+  methods:{
+    cambioValore(){
+      //console.log(this.selected);
+      this.$emit('changeValue',this.selected);
     }
   }
 }
+
 </script>
 
 <style>
