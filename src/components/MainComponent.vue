@@ -1,8 +1,21 @@
 <template>
   <main>
     <div class="container-fluid">
+
+      <header>
+
+        <div class="logo">LOGO</div>
+
+        <div class="genre">
+
+          <select-component @changeValue="selectedGenre()" />
+
+        </div>
+
+      </header>
+
       <div class="container">
-        <div class="row mt-5 py-5">
+        <div class="row py-5">
 
           <div v-for="(data, index) in datas" :key="index" class="col-2 card lm-card text-center p-3 m-3">
             <img :src="data.poster" :alt="data.title">
@@ -14,19 +27,27 @@
         </div>
       </div>
     </div>
+
   </main>
 </template>
 
 <script>
 
 import axios from 'axios';
+import SelectComponent from './SelectComponent.vue';
 
 export default {
   name: 'MainComponent',
+
+  components: {
+    SelectComponent
+  },
+
   data(){
     return{
       url: 'https://flynn.boolean.careers/exercises/api/array/music',
       datas: [],
+      
     }
   },
 
@@ -35,11 +56,14 @@ export default {
       axios.get(this.url)
       .then(r=>{
         this.datas = r.data.response;
-        console.log(this.datas);
       })
-    }
+    },
 
+    selectedGenre(currentValue){
+      console.log(currentValue)
+    }
   },
+
   mounted(){
     this.getApi()
   }
@@ -48,9 +72,19 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/style/var';
+@import '../assets/style/global';
+
+
+  header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: (lighten($primary-color, 5%));
+    height: 60px;
+  }
 
   main{
-    min-height: calc(100vh - 70px);
+    min-height: 100vh;
     background-color: $primary-color;
 
     .card{

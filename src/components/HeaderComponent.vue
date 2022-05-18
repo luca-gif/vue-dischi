@@ -18,7 +18,8 @@
 
 <script>
 export default {
-  name: 'HeaderComponent'
+  name: 'HeaderComponent',
+  
 }
 </script>
 
@@ -32,7 +33,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     background-color: (lighten($primary-color, 5%));
-    height: 70px;
+    height: 60px;
     position: fixed;
     top: 0;
     z-index: 999;
