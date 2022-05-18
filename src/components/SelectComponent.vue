@@ -34,6 +34,10 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+select{
+  margin-right: 10px;
+}
 
 </style>

@@ -4,7 +4,7 @@
 
       <header>
 
-        <div class="logo">LOGO</div>
+        <div class="logo"><img src="https://www.geekslab.it/wp-content/uploads/2019/03/logo-spotify.png" alt=""></div>
 
         <div class="genre">
 
@@ -96,6 +96,9 @@ export default {
 @import '../assets/style/var';
 @import '../assets/style/global';
 
+.container-fluid{
+  padding: 0;
+}
  
 
   header{
@@ -104,6 +107,11 @@ export default {
     align-items: center;
     background-color: (lighten($primary-color, 5%));
     height: 60px;
+
+    img{
+      width: 50px;
+      padding-left: 10px;
+    }
   }
 
   main{
