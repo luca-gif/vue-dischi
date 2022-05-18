@@ -61,7 +61,6 @@ export default {
   
     selectedGenre(genereSelezionato){
       this.genereScelto = genereSelezionato;
-      //console.log(genereSelezionato);
     },
 
   },
@@ -69,21 +68,19 @@ export default {
     computed: {
 
       getAlbumFiltrati() {
-
         let arrayFiltrato = [];
 
-        for(var i = 0; i < this.datas.length; i++) {
-
-          console.log(this.datas[i].genre.toLowerCase(), this.genereScelto.toLowerCase());
-
-          if (this.datas[i].genre.toLowerCase() == this.genereScelto.toLowerCase()) {
-            arrayFiltrato.push(this.datas[i]);
-          } else if (this.genereScelto.toLowerCase() == 'all'){
-            arrayFiltrato = this.datas
-          }
+        if(this.genereScelto == 'all'){
+          arrayFiltrato = this.datas;
+        }else {
+          arrayFiltrato = this.datas.filter(data => {
+            return data.genre.toLowerCase() == this.genereScelto.toLowerCase();
+          })
+            //console.log(arrayFiltrato)
         }
 
-        return arrayFiltrato;
+          return arrayFiltrato;
+       
       }      
       
     },
@@ -99,6 +96,7 @@ export default {
 @import '../assets/style/var';
 @import '../assets/style/global';
 
+ 
 
   header{
     display: flex;
